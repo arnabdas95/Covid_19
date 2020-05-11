@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect
 import requests
 
 url = 'https://api.covid19india.org/state_district_wise.json'
@@ -21,8 +22,9 @@ def details(request):
         state = request.POST.get("st")
     district = data[state]['districtData']
 
-    if request.method and 'area_name' in request.POST:
+    if request.method == 'POST' and 'area_name' in request.POST:
         area = request.POST.get("area")
+
         confirmed = district[area]['confirmed']
         active = district[area]['active']
         deceased = district[area]['deceased']
