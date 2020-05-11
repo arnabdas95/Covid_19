@@ -27,16 +27,19 @@ def details(request):
     district = data[state]['districtData']
 
     if request.method == 'POST' and 'area_name' in request.POST:
-        area = request.POST.get("area")
-        confirmed = district[area]['confirmed']
-        active = district[area]['active']
-        deceased = district[area]['deceased']
-        recovered = district[area]['recovered']
-        if area == 'none' or confirmed == 'none' or active == 'none' or deceased == 'none' or recovered == 'none':
+        try:
+            area = request.POST.get("area")
+            confirmed = district[area]['confirmed']
+            active = district[area]['active']
+            deceased = district[area]['deceased']
+            recovered = district[area]['recovered']
+            val = 1
+        #if area == 'none' or confirmed == 'none' or active == 'none' or deceased == 'none' or recovered == 'none':
+        except:
             messages.success(request, 'Cannot Fetch data! Try again.')
             print(confirmed)
             return redirect('/')
-        val = 1
+
     else:
         val = 0
 
