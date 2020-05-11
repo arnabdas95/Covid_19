@@ -16,22 +16,31 @@ def home(request):
 
 
 def details(request):
-    global state, confirmed, area, val, active, recovered, deceased
+    global state, confirmed, area, val, active, recovered, deceased,data
 
     if request.method == 'POST' and 'state_name' in request.POST:
         state = request.POST.get("st")
+    if state == '':
+        messages.success(request, 'Cannot Fetch data! Please Try again')
+        return redirect('/')
+
     district = data[state]['districtData']
 
     if request.method == 'POST' and 'area_name' in request.POST:
         area = request.POST.get("area")
-
         confirmed = district[area]['confirmed']
         active = district[area]['active']
         deceased = district[area]['deceased']
         recovered = district[area]['recovered']
+        if area == 'none' or confirmed == 'none' or active == 'none' or deceased == 'none' or recovered == 'none':
+            messages.success(request, 'Cannot Fetch data! Try again.')
+            print(confirmed)
+            return redirect('/')
         val = 1
     else:
         val = 0
+
+
 
     return render(request, 'details.html',
                   {'state': state, 'area': area, 'district': district, 'confirmed': confirmed, 'active': active,

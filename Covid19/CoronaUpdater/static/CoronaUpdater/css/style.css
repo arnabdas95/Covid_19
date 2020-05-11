@@ -8,19 +8,25 @@ font-family: 'El Messiri', sans-serif !important;
 .box{
  margin: auto;
    right: 0px;
-  width: 300px;
+  max-width: 350px;
   padding: 10px;
+  width:100%;
 
 
 }
-select{
-font-size:10px;}
+
 .card-header{
-color:white  !important;}
+color:white  !important;
+}
 
 a{
 color:white !important;
 }
+
+.heading{
+color:white;
+text-align:center;
+border-bottom:2px solid white;}
 
 .footer {
 position:fixed;
@@ -34,4 +40,9 @@ position:fixed;
     color:white;
     padding-top:10px;
     text-align: center;
+   font-family: 'Roboto', sans-serif;
 }
+
+
+li{
+text-align:center !important}
