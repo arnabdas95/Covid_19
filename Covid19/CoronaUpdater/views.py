@@ -21,7 +21,7 @@ def details(request):
     if request.method == 'POST' and 'state_name' in request.POST:
         state = request.POST.get("st")
     if state == '':
-        messages.success(request, 'Cannot Fetch data! Please Try again')
+        messages.success(request, 'Cannot Fetch data from server!Try again')
         return redirect('/')
 
     district = data[state]['districtData']
@@ -36,7 +36,7 @@ def details(request):
             val = 1
         except:
             messages.success(request, 'Cannot Fetch data from server! Try again.')
-            return redirect('details.html')
+            return redirect('/')
 
     else:
         val = 0
