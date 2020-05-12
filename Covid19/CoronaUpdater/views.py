@@ -34,11 +34,9 @@ def details(request):
             deceased = district[area]['deceased']
             recovered = district[area]['recovered']
             val = 1
-        #if area == 'none' or confirmed == 'none' or active == 'none' or deceased == 'none' or recovered == 'none':
         except:
-            messages.success(request, 'Cannot Fetch data! Try again.')
-            print(confirmed)
-            return redirect('/')
+            messages.success(request, 'Cannot Fetch data from server! Try again.')
+            return redirect('details.html')
 
     else:
         val = 0
