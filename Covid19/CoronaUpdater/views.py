@@ -56,7 +56,7 @@ def home(request):
 
 def details(request):
     global state, confirmed, area, val, active, recovered, deceased,data
-
+    count = 0
     if request.method == 'POST' and 'state_name' in request.POST:
         state = request.POST.get("st")
     if state == '':
@@ -66,20 +66,25 @@ def details(request):
     district = data[state]['districtData']
 
     if request.method == 'POST' and 'area_name' in request.POST:
-        try:
-            area = request.POST.get("area")
-            confirmed = district[area]['confirmed']
-            active = district[area]['active']
-            deceased = district[area]['deceased']
-            recovered = district[area]['recovered']
-            val = 1
-        except:
-            messages.success(request, 'Cannot Fetch data from server! Try again.')
-            return redirect('/')
+        while count <3:
+            try:
+                area = request.POST.get("area")
+                confirmed = district[area]['confirmed']
+                active = district[area]['active']
+                deceased = district[area]['deceased']
+                recovered = district[area]['recovered']
+                val = 1
+                count+=1
+
+
+            except:
+
+                messages.success(request, 'Cannot Fetch data from server! Try again.')
+                return redirect('/')
 
     else:
         val = 0
-    print("hello")
+
 
 
     return render(request, 'details.html',
