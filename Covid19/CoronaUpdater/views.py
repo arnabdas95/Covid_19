@@ -75,7 +75,7 @@ def details(request):
             val = 1
         except:
             messages.success(request, 'Cannot Fetch data! Try again.')
-            return redirect('details.html')
+            return redirect('/')
 
     else:
         val = 0
