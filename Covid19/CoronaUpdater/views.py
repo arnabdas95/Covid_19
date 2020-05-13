@@ -56,18 +56,9 @@ def home(request):
 
 def details(request):
     global state, confirmed, area, val, active, recovered, deceased,data
-    count = 0
     if request.method == 'POST' and 'state_name' in request.POST:
         state = request.POST.get("st")
-        b = request.POST.get("st")
-        print(b)
-    if state == '':
-        while(count<3):
-            state = request.POST.get("st")
-            if state == '':
-                count+=1
-            else:
-                break
+
     if state == '':
         messages.success(request, 'Cannot Fetch data from server!Try again')
         return redirect('/')
