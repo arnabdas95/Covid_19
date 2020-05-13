@@ -132,3 +132,7 @@ input {
  .front{
  transform: translate(-1.5%, -1.5%);
  }
+
+
+ #bcard{
+ position:relative;}

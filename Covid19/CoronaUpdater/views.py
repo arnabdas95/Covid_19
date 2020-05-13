@@ -5,15 +5,15 @@ import requests
 url = 'https://api.covid19india.org/state_district_wise.json'
 country_url ='https://api.covid19api.com/summary'
 
-country_page= requests.get(country_url)
+country_page = requests.get(country_url)
 page = requests.get(url)
 
 data = page.json()
 world_data = country_page.json()
 
-worldtc=world_data['Global']['TotalConfirmed']
-worldtd=world_data['Global']['TotalDeaths']
-worldtr=world_data['Global']['TotalRecovered']
+worldtc = world_data['Global']['TotalConfirmed']
+worldtd = world_data['Global']['TotalDeaths']
+worldtr = world_data['Global']['TotalRecovered']
 world = {'worldtc':worldtc,'worldtd':worldtd,'worldtr':worldtr}
 
 chainatc = world_data['Countries'][35]['TotalConfirmed']
@@ -66,21 +66,16 @@ def details(request):
     district = data[state]['districtData']
 
     if request.method == 'POST' and 'area_name' in request.POST:
-        while count <3:
-            try:
-                area = request.POST.get("area")
-                confirmed = district[area]['confirmed']
-                active = district[area]['active']
-                deceased = district[area]['deceased']
-                recovered = district[area]['recovered']
-                val = 1
-                count+=1
-
-
-            except:
-
-                messages.success(request, 'Cannot Fetch data from server! Try again.')
-                return redirect('/')
+        try:
+            area = request.POST.get("area")
+            confirmed = district[area]['confirmed']
+            active = district[area]['active']
+            deceased = district[area]['deceased']
+            recovered = district[area]['recovered']
+            val = 1
+        except:
+            messages.success(request, 'Cannot Fetch data! Try again.')
+            return redirect('details.html')
 
     else:
         val = 0

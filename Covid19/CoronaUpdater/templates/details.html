@@ -5,7 +5,7 @@ Select Area from {{state}}
 
 {% block content %}
 
-  <form method="post"  action="details.html">
+  <form method="post"  action="">
     {% csrf_token %}
   <div class="form-row align-items-center " >
     <div class="col-auto my-1 ">
@@ -25,8 +25,8 @@ Select Area from {{state}}
 </form>
 
     {%if val%}
-    <div class="card mt-3" style="max-width: 20rem;">
-  <div class="card-header bg-dark " >
+    <div class="card mt-3" style="max-width: 20rem;" >
+  <div class="card-header bg-dark " id="bcard">
      {{area}} ({{state}})
   </div>
   <ul class="list-group list-group-flush">

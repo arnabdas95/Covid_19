@@ -8,11 +8,11 @@ Select State
 {% block content %}
   {% load static %}
   <form method="post"  action="details.html">
-    {% csrf_token %}
-  <div class="form-row align-items-center " >
+      {% csrf_token%}
+    <div class="form-row align-items-center " >
     <div class="col-auto my-1 ">
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect" >select state</label>
-      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="st" >
+      <select class="custom-select mr-sm-2  " id="inlineFormCustomSelect" name="st" placeholder="" >
 
         {% for item in data %}
         <option style="font-size:10px;" >{{item}}</option>
@@ -20,7 +20,7 @@ Select State
 
       </select>
     </div>
-    <div class="col-auto my-1">
+    <div class="  col-auto my-1">
       <button type="submit" class="btn btn-dark" name="state_name">Submit</button>
     </div>
   </div>
