@@ -57,6 +57,7 @@ def home(request):
 def details(request):
     global state, confirmed, area, val, active, recovered, deceased,data
     count = 0
+    while count <3:
     if request.method == 'POST' and 'state_name' in request.POST:
         state = request.POST.get("st")
     if state == '':
