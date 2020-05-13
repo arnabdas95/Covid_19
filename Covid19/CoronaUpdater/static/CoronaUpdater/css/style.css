@@ -11,7 +11,7 @@ font-family: 'El Messiri', sans-serif !important;
   max-width: 350px;
   padding: 10px;
   width:100%;
-
+  margin-bottom: 30px;
 
 }
 
@@ -42,6 +42,7 @@ position:fixed;
     text-align: center;
    font-family: 'Roboto', sans-serif;
    z-index:100;
+
 }
 
 
